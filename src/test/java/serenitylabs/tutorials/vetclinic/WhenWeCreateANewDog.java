@@ -15,6 +15,7 @@ public class WhenWeCreateANewDog {
         Dog fido = Dog
                         .called("Fido")
                         .ofBreed("Labrador")
+                        .ofColour("black")
                         .bornOn(THE_FOURTH_OF_JULY);
 
         Assert.assertEquals("Fido",fido.getName());

@@ -38,7 +38,7 @@ public class Dog {
     }
 
     interface  WithBreed{
-        DogBreeder ofBreed(String breed);
+        WithColour ofBreed(String breed);
 
     }
 
@@ -54,7 +54,7 @@ public class Dog {
             this.name =name;
 
         }
-        public DogBreeder ofBreed(String breed) {
+        public WithColour ofBreed(String breed) {
             this.breed =breed;
             return this;
         }
