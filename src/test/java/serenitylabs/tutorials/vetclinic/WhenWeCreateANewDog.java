@@ -26,25 +26,39 @@ public class WhenWeCreateANewDog {
     }
 
     @Test
-    public void a_dog_can_have_an_optional_colour(){
-
+    public void a_dog_can_have_an_optional_favourite_food(){
         LocalDate THE_FOURTH_OF_JULY =LocalDate.of(2023,07,04);
-
-        Dog fido = Dog.called("Fido")
+        Dog fido = Dog
+                .called("Fido")
                 .ofBreed("Labrador")
                 .ofColour("black")
+                .favouriteFood("Meat")
                 .bornOn(THE_FOURTH_OF_JULY);
 
         Assert.assertEquals("Fido",fido.getName());
         Assert.assertEquals("Labrador",fido.getBreed());
-        Assert.assertEquals(THE_FOURTH_OF_JULY,fido.getDateOfBirth());
         Assert.assertEquals("black",fido.getColour());
-
+        Assert.assertEquals(THE_FOURTH_OF_JULY,fido.getDateOfBirth());
+        Assert.assertEquals("Meat",fido.getFavouriteFood());
 
     }
 
+    @Test
+    public void a_dog_can_have_an_optional_favourite_toy(){
 
+        LocalDate THE_FOURTH_OF_JULY =LocalDate.of(2023,07,04);
+        Dog fido = Dog
+                .called("Fido")
+                .ofBreed("Labrador")
+                .ofColour("black")
+                .favouriteToy("Bone")
+                .bornOn(THE_FOURTH_OF_JULY);
 
-
+        Assert.assertEquals("Fido",fido.getName());
+        Assert.assertEquals("Labrador",fido.getBreed());
+        Assert.assertEquals("black",fido.getColour());
+        Assert.assertEquals(THE_FOURTH_OF_JULY,fido.getDateOfBirth());
+        Assert.assertEquals("Bone",fido.getFavouriteToy());
+    }
 
 }
