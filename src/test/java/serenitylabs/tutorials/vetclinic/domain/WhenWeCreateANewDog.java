@@ -1,8 +1,8 @@
 package serenitylabs.tutorials.vetclinic.domain;
 
-import org.junit.Assert;
-import org.junit.Test;
 
+import org.junit.Test;
+import org.junit.Assert;
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.assertThat;
 
@@ -22,6 +22,8 @@ public class WhenWeCreateANewDog {
     public void a_dog_should_be_printed_in_a_readable_form(){
         Dog fido = Dog.called("Fido").ofBreed("Labrador").andOfColour("Black");
         assertThat(fido.toString(),is(equalTo("Fido the black labrador")));
+        assertThat(fido.toString(),startsWith("Fido"));
+        assertThat(fido.toString(),endsWith("labrador"));
         assertThat(fido.toString(),containsString("black"));
     }
 

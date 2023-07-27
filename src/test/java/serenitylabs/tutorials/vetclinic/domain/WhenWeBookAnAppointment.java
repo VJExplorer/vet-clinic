@@ -1,7 +1,10 @@
 package serenitylabs.tutorials.vetclinic.domain;
 
-import org.junit.Assert;
+import static org.hamcrest.Matchers.*;
+import static org.junit.Assert.assertThat;
+
 import org.junit.Test;
+import org.junit.Assert;
 
 import java.time.LocalDateTime;
 
@@ -13,9 +16,9 @@ public class WhenWeBookAnAppointment {
     public void an_appointment_has_a_patient_name_an_owner_and_a_date() {
         Appointment appointment = Appointment.forPetCalled("Fido").ownedBy("Fred").at(TODAY_AT_2_PM);
 
-        Assert.assertEquals("Fido",appointment.getPetName());
-        Assert.assertEquals("Fred",appointment.getOwner());
-        Assert.assertEquals(TODAY_AT_2_PM,appointment.getAppointmentTime());
+        assertThat(appointment.getPetName(),is(equalTo("Fido")));
+        assertThat(appointment.getOwner(),is(equalTo("Fred")));
+        assertThat(appointment.getAppointmentTime(),is(equalTo(TODAY_AT_2_PM)));
     }
 
     @Test
