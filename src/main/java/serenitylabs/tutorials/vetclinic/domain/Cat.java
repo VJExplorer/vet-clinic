@@ -2,13 +2,16 @@ package serenitylabs.tutorials.vetclinic.domain;
 
 import com.google.common.collect.ImmutableList;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Cat {
+public class Cat extends Animal implements NeedsVaccination{
     private final String name;
     private final String breed;
     private final List<String> colour;
+
+    private LocalDate vaccinatedDate;
 
     public Cat(String name, String breed, List<String> colour) {
 
@@ -18,6 +21,10 @@ public class Cat {
     }
 
     @Override
+    public String complaint(){
+        return "Meow";
+    }
+
     public String toString() {
         return name + " the " + (colour + " " + breed).toLowerCase();
     }
@@ -36,6 +43,17 @@ public class Cat {
 
     public static CatBuilder called(String name) {
         return new CatBuilder(name);
+    }
+
+    @Override
+    public void wasVaccinatedOn(LocalDate vaccinatedDate) {
+        this.vaccinatedDate =vaccinatedDate;
+
+    }
+
+    @Override
+    public LocalDate nextVaccinationDue() {
+        return vaccinatedDate.plusYears(1);
     }
 
     public static class CatBuilder {

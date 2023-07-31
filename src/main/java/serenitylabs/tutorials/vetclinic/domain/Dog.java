@@ -3,13 +3,15 @@ package serenitylabs.tutorials.vetclinic.domain;
 import com.google.common.base.Joiner;
 import com.google.common.collect.ImmutableList;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Dog {
+public class Dog extends Animal implements NeedsVaccination {
     private final String name;
     private final String breed;
     private final List<String> colour;
+    private LocalDate vaccinatedDate;
 
     public Dog(String name, String breed, List<String> colour) {
 
@@ -35,8 +37,24 @@ public class Dog {
         return new ArrayList(colour);
     }
 
+    @Override
+    public String complaint(){
+        return "Grrr";
+    }
+
     public static DogBuilder called(String name) {
         return new DogBuilder(name);
+    }
+
+    @Override
+    public void wasVaccinatedOn(LocalDate vaccinatedDate) {
+
+        this.vaccinatedDate = vaccinatedDate;
+    }
+
+    @Override
+    public LocalDate nextVaccinationDue() {
+        return vaccinatedDate.plusMonths(6);
     }
 
     public static class DogBuilder {
