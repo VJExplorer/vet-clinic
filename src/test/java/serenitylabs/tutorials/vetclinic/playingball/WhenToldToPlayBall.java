@@ -25,17 +25,17 @@ public class WhenToldToPlayBall {
 
         Child bill = new Child();
 
-        bill.goPlay(Cricket);
+        bill.play(Cricket);
 
         assertThat(output.toString(), equalTo("Hit the wicket"));
     }
 
     @Test
-    public void child_should_play_tennis_if_asked() {
+    public void child_should_play_tennis_if_asked() throws Exception {
 
         Child bill = new Child();
 
-        bill.goPlay(Tennis);
+        bill.play(Tennis);
 
         assertThat(output.toString(), equalTo("Serve the ball"));
     }
@@ -45,7 +45,7 @@ public class WhenToldToPlayBall {
 
         Child bill = new Child();
 
-        bill.goPlay(Football);
+        bill.play(Football);
 
         assertThat(output.toString(), equalTo("Kick the ball"));
     }
@@ -55,7 +55,7 @@ public class WhenToldToPlayBall {
 
         Child bill = new Child();
 
-        bill.goPlay(Handball);
+        bill.play(Handball);
 
         assertThat(output.toString(), equalTo("Throw the ball"));
     }
@@ -65,7 +65,7 @@ public class WhenToldToPlayBall {
 
         Child bill = new Child();
 
-        bill.goPlay(Hockey);
+        bill.play(Hockey);
 
         assertThat(output.toString(), equalTo("Hit the ball with the stick"));
     }
