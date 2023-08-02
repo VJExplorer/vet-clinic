@@ -8,7 +8,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.*;
 import static serenitylabs.tutorials.vetclinic.playingball.model.Game.*;
 
 public class WhenToldToPlayBall {
@@ -68,5 +68,15 @@ public class WhenToldToPlayBall {
         bill.play(Hockey);
 
         assertThat(output.toString(), equalTo("Hit the ball with the stick"));
+    }
+
+    @Test
+    public void child_should_play_not_listed_game() {
+
+        Child bill = new Child();
+
+        bill.play(Unknown);
+
+        assertThat(output.toString(),containsString("Game not listed"));
     }
 }

@@ -1,27 +1,20 @@
 package serenitylabs.tutorials.vetclinic.playingball.model;
 
+import java.sql.SQLOutput;
+
 public class Child {
 
     public void play(Game game){
-        Player player = gameCalled(game);
-        player.play();
+
+        try {
+            Player player = gameCalled(game);
+            player.play();
+        }catch ( DontKnowThatGameException exception){
+            System.out.println("Game not listed");
+        }
     }
 
-/*    public void goPlay(Game game) {
-        if (game == Football) {
-            new PlayFootball().play();
-        } else if (game == Tennis) {
-            new PlayTennis().play();
-        } else if (game == Cricket) {
-            new PlayCricket().play();
-        } else if (game == Handball) {
-            new PlayHandball().play();
-        } else if (game == Hockey) {
-            new PlayHockey().play();
-        }
-    }*/
-
-    private Player gameCalled(Game game){
+    private Player gameCalled(Game game) throws DontKnowThatGameException {
         switch (game){
             case Football:
                 return new PlayFootball();
@@ -34,7 +27,7 @@ public class Child {
             case Hockey:
                 return new PlayHockey();
             default:
-                return new DontKnowThatGame();
+                throw new DontKnowThatGameException("");
         }
     }
 }
